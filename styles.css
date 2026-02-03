@@ -667,3 +667,19 @@ body {
         width: 24px;
     }
 }
+
+
+.extra-photos-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.extra-photos-row .slide-image-small {
+    flex: 1 1 30%;
+    min-height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}

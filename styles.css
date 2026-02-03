@@ -1,4 +1,4 @@
-/* ===== RESET BÁSICO ===== */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +8,8 @@
 /* ===== BASE ===== */
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top, #2d2cff 0, #0b1020 40%, #05060a 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #fef9c3 0%, #e0f2fe 40%, #dcfce7 100%);
+    color: #0f172a;
     height: 100vh;
     overflow: hidden;
 }
@@ -19,7 +19,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    padding: 32px 40px 80px;
+    padding: 24px 32px 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,14 +28,15 @@ body {
 /* ===== SLIDES ===== */
 .slide {
     position: absolute;
-    inset: 32px 40px 80px;
+    inset: 24px 32px 80px;
     border-radius: 24px;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.95));
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-    padding: 32px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 18px 60px rgba(15, 23, 42, 0.18);
+    padding: 24px 28px;
     display: none;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     overflow: hidden;
 }
 
@@ -45,132 +46,118 @@ body {
 
 /* ===== TÍTULOS ===== */
 .slide-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-size: clamp(1.8rem, 3.3vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #f97316;
-    text-shadow: 0 0 18px rgba(249, 115, 22, 0.4);
+    text-align: left;
     margin-bottom: 12px;
 }
 
+/* Cores diferentes por tema */
+.slide-1 .slide-title,
+.slide-2 .slide-title {
+    color: #0ea5e9; /* azul claro */
+}
+
+.slide-3 .slide-title {
+    color: #22c55e; /* verde */
+}
+
+.slide-4 .slide-title {
+    color: #f97316; /* laranja */
+}
+
+.slide-5 .slide-title {
+    color: #6366f1; /* azul arroxeado, mas bem claro */
+}
+
+.slide-6 .slide-title,
+.slide-7 .slide-title {
+    color: #eab308; /* amarelo */
+}
+
 .big-title {
-    font-size: clamp(2.4rem, 4vw, 3.5rem);
-    color: #22d3ee;
-    text-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
 }
 
-.slide-subtitle {
-    font-size: clamp(1rem, 1.6vw, 1.3rem);
-    color: #e5e7eb;
-    opacity: 0.9;
-}
-
-/* ===== LAYOUT INTERNO DOS SLIDES ===== */
+/* ===== CONTEÚDO DO SLIDE ===== */
 .slide-content {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.slide-body {
+/* ===== LINHA DE FOTOS PRINCIPAIS ===== */
+.photo-row {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
-/* ===== SLIDE 1 - ABERTURA ===== */
-.slide-1 .slide-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr);
-    gap: 32px;
-    align-items: center;
-}
-
-.slide-1 .slide-text {
-    max-width: 480px;
-}
-
-/* Foto grande de abertura */
-.slide-image-big {
+/* Foto grande (duas por slide) */
+.photo-big {
+    position: relative;
     width: 100%;
     height: 100%;
     min-height: 260px;
-    border-radius: 24px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-    border: 3px solid rgba(56, 189, 248, 0.8);
-}
-
-/* ===== GRIDS DE FOTOS ===== */
-.photos-only {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* 2 colunas */
-.photo-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-/* 3 colunas */
-.photo-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-/* Item de foto genérico */
-.photo-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 18px;
+    border-radius: 20px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(251, 191, 36, 0.9);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.35);
     overflow: hidden;
 }
 
-/* Efeito de brilho */
-.photo-item::after,
-.slide-image-big::after {
+/* Leve borda colorida e brilho */
+.photo-big::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 3px solid rgba(56, 189, 248, 0.7);
+    mix-blend-mode: soft-light;
+}
+
+.photo-big::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(248, 250, 252, 0.05),
-        transparent 40%,
-        rgba(56, 189, 248, 0.06)
+        rgba(255, 255, 255, 0.22),
+        transparent 45%,
+        rgba(34, 197, 94, 0.2)
     );
     mix-blend-mode: screen;
 }
 
-/* ===== SLIDE DE FECHAMENTO ===== */
-.closing-slide {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
-    gap: 24px;
-    align-items: center;
+/* ===== LINHA DE FOTOS PEQUENAS NO ÚLTIMO SLIDE ===== */
+.small-bottom-row {
+    margin-top: 14px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.closing-text {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 460px;
+.photo-small {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.28);
+    overflow: hidden;
+}
+
+.photo-small::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid rgba(234, 179, 8, 0.7);
+    mix-blend-mode: soft-light;
 }
 
 /* ===== CONTROLES ===== */
@@ -181,19 +168,19 @@ body {
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
     z-index: 20;
 }
 
 .nav-button {
     background: rgba(15, 23, 42, 0.9);
-    color: #e5e7eb;
+    color: #f9fafb;
     border: 1px solid rgba(148, 163, 184, 0.8);
     padding: 10px 18px;
     border-radius: 999px;
     cursor: pointer;
-    font-size: 0.9rem;
-    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
@@ -202,19 +189,19 @@ body {
 }
 
 .nav-button:hover {
-    background: #f97316;
-    border-color: #fed7aa;
-    color: #111827;
-    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.6);
+    background: #0ea5e9;
+    border-color: #bae6fd;
+    color: #0f172a;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
 }
 
 .slide-counter {
-    font-size: 0.9rem;
-    color: #e5e7eb;
+    font-size: 0.85rem;
+    color: #0f172a;
     padding: 6px 10px;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.7);
 }
 
 /* ===== INDICADORES (PONTOS) ===== */
@@ -228,7 +215,7 @@ body {
     z-index: 20;
 }
 
-/* Presume que o JS cria elementos com a classe .indicator-dot */
+/* Exemplo de classe que seu JS pode usar */
 .indicator-dot {
     width: 9px;
     height: 9px;
@@ -239,39 +226,41 @@ body {
 
 .indicator-dot.active {
     width: 24px;
-    background: #22d3ee;
+    background: #22c55e;
 }
 
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 900px) {
     .presentation-container {
-        padding: 16px 10px 90px;
+        padding: 12px 10px 90px;
     }
 
     .slide {
-        inset: 16px 10px 90px;
+        inset: 12px 10px 90px;
         padding: 18px 16px;
         border-radius: 18px;
     }
 
-    .slide-1 .slide-content,
-    .closing-slide {
+    .slide-title {
+        text-align: center;
+    }
+
+    .photo-row {
         grid-template-columns: 1fr;
     }
 
-    .slide-image-big {
-        min-height: 220px;
+    .small-bottom-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .photo-grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .photo-big {
+        min-height: 220px;
     }
 }
 
 @media (max-width: 600px) {
-    .photo-grid-2,
-    .photo-grid-3 {
-        grid-template-columns: 1fr;
+    .small-bottom-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .controls {

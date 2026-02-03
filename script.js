@@ -2,44 +2,47 @@
    SCRIPT DE CONTROLE DA APRESENTAÇÃO
    ============================================ */
 
-// Variável para rastrear o slide atual
+// Variável para rastrear o slide atual (1-based)
 let currentSlide = 1;
 
-// Número total de slides (ajuste conforme necessário)
-const totalSlides = 8;
+// Número total de slides (AJUSTE AQUI se mudar a quantidade)
+const totalSlides = 7;
 
 /* ============================================
    FUNÇÃO: Mostrar um slide específico
    ============================================ */
 function showSlide(n) {
-    // Seleciona todos os elementos com a classe 'slide'
     const slides = document.querySelectorAll('.slide');
-    
-    // Validação: se o número do slide for maior que o total, volta para o primeiro
+
+    // Corrige n para ficar dentro do intervalo [1, totalSlides]
     if (n > totalSlides) {
         currentSlide = totalSlides;
-    }
-    
-    // Validação: se o número do slide for menor que 1, volta para o último
-    if (n < 1) {
+    } else if (n < 1) {
         currentSlide = 1;
+    } else {
+        currentSlide = n;
     }
-    
-    // Remove a classe 'active' de todos os slides
+
+    // Esconde todos os slides
     slides.forEach(slide => {
         slide.classList.remove('active');
     });
-    
-    // Adiciona a classe 'active' ao slide atual
-    slides[currentSlide - 1].classList.add('active');
-    
-    // Atualiza o número do slide exibido
-    document.getElementById('slideNumber').textContent = currentSlide;
-    
-    // Atualiza os indicadores de slide (pontos)
+
+    // Garante que o índice existe antes de usar
+    if (slides[currentSlide - 1]) {
+        slides[currentSlide - 1].classList.add('active');
+    }
+
+    // Atualiza número do slide exibido
+    const slideNumberEl = document.getElementById('slideNumber');
+    if (slideNumberEl) {
+        slideNumberEl.textContent = currentSlide;
+    }
+
+    // Atualiza indicadores (pontos)
     updateIndicators();
-    
-    // Atualiza o estado dos botões de navegação
+
+    // Atualiza estado dos botões
     updateButtons();
 }
 
@@ -47,31 +50,26 @@ function showSlide(n) {
    FUNÇÃO: Ir para o próximo slide
    ============================================ */
 function nextSlide() {
-    currentSlide++;
-    showSlide(currentSlide);
+    showSlide(currentSlide + 1);
 }
 
 /* ============================================
    FUNÇÃO: Ir para o slide anterior
    ============================================ */
 function previousSlide() {
-    currentSlide--;
-    showSlide(currentSlide);
+    showSlide(currentSlide - 1);
 }
 
 /* ============================================
    FUNÇÃO: Atualizar indicadores (pontos)
    ============================================ */
 function updateIndicators() {
-    // Seleciona todos os pontos indicadores
     const indicators = document.querySelectorAll('.indicator-dot');
-    
-    // Remove a classe 'active' de todos os indicadores
+
     indicators.forEach(indicator => {
         indicator.classList.remove('active');
     });
-    
-    // Adiciona a classe 'active' ao indicador correspondente ao slide atual
+
     if (indicators[currentSlide - 1]) {
         indicators[currentSlide - 1].classList.add('active');
     }
@@ -83,12 +81,13 @@ function updateIndicators() {
 function updateButtons() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    
-    // Desabilita o botão anterior se estiver no primeiro slide
-    prevBtn.disabled = currentSlide === 1;
-    
-    // Desabilita o botão próximo se estiver no último slide
-    nextBtn.disabled = currentSlide === totalSlides;
+
+    if (prevBtn) {
+        prevBtn.disabled = currentSlide === 1;
+    }
+    if (nextBtn) {
+        nextBtn.disabled = currentSlide === totalSlides;
+    }
 }
 
 /* ============================================
@@ -96,24 +95,23 @@ function updateButtons() {
    ============================================ */
 function createIndicators() {
     const indicatorsContainer = document.querySelector('.slide-indicators');
-    
-    // Cria um ponto indicador para cada slide
+    if (!indicatorsContainer) return;
+
+    // Limpa indicadores antigos (caso recarregue)
+    indicatorsContainer.innerHTML = '';
+
     for (let i = 1; i <= totalSlides; i++) {
         const dot = document.createElement('div');
         dot.className = 'indicator-dot';
-        
-        // Se for o primeiro slide, marca como ativo
+
         if (i === 1) {
             dot.classList.add('active');
         }
-        
-        // Adiciona evento de clique para ir direto ao slide
+
         dot.addEventListener('click', () => {
-            currentSlide = i;
-            showSlide(currentSlide);
+            showSlide(i);
         });
-        
-        // Adiciona o ponto ao container
+
         indicatorsContainer.appendChild(dot);
     }
 }
@@ -128,7 +126,7 @@ document.addEventListener('keydown', (event) => {
             nextSlide();
         }
     }
-    
+
     // Seta para a esquerda: slide anterior
     if (event.key === 'ArrowLeft') {
         if (currentSlide > 1) {
@@ -140,44 +138,24 @@ document.addEventListener('keydown', (event) => {
 /* ============================================
    INICIALIZAÇÃO
    ============================================ */
-
-// Executa quando o documento estiver completamente carregado
 document.addEventListener('DOMContentLoaded', () => {
     // Cria os indicadores de slide
     createIndicators();
-    
+
     // Mostra o primeiro slide
     showSlide(currentSlide);
-    
+
     // Atualiza o total de slides no contador
-    document.getElementById('totalSlides').textContent = totalSlides;
+    const totalSlidesEl = document.getElementById('totalSlides');
+    if (totalSlidesEl) {
+        totalSlidesEl.textContent = totalSlides;
+    }
 });
 
 /* ============================================
    NOTAS PARA EDIÇÃO:
    ============================================
-   
    1. ADICIONAR NOVOS SLIDES:
       - Adicione um novo <div class="slide"> no HTML
-      - Incremente a variável 'totalSlides' aqui no script
-      - Exemplo: const totalSlides = 9;
-   
-   2. EDITAR TEXTOS:
-      - Abra o arquivo index.html
-      - Procure pelo texto que deseja alterar
-      - Substitua mantendo as tags HTML
-   
-   3. ADICIONAR IMAGENS:
-      - Substitua as URLs de placeholder pelas suas imagens
-      - Exemplo: style="background-image: url('sua-imagem.jpg');"
-   
-   4. PERSONALIZAR CORES:
-      - Abra o arquivo styles.css
-      - Procure por cores (ex: #667eea)
-      - Substitua pelos códigos de cor desejados
-   
-   5. ADICIONAR MAIS FUNCIONALIDADES:
-      - Você pode adicionar mais funções aqui
-      - Mantenha a estrutura comentada para facilitar futuras edições
-   
-   ============================================ */
+      - Atualize a constante 'totalSlides' aqui no script
+

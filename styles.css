@@ -1,20 +1,24 @@
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
+/* Fundo claro com leve gradiente */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-/* ===== BASE ===== */
-body {
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #fef9c3 0%, #e0f2fe 40%, #dcfce7 100%);
+}
+
+body {
+    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
     color: #0f172a;
-    height: 100vh;
     overflow: hidden;
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
+/* Container geral */
 .presentation-container {
     position: relative;
     width: 100vw;
@@ -25,18 +29,17 @@ body {
     justify-content: center;
 }
 
-/* ===== SLIDES ===== */
+/* Slides */
 .slide {
     position: absolute;
     inset: 24px 32px 80px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid rgba(148, 163, 184, 0.3);
+    background: rgba(255, 255, 255, 0.96);
+    border: 2px solid rgba(148, 163, 184, 0.35);
     box-shadow: 0 18px 60px rgba(15, 23, 42, 0.18);
     padding: 24px 28px;
     display: none;
     flex-direction: column;
-    gap: 20px;
     overflow: hidden;
 }
 
@@ -44,51 +47,13 @@ body {
     display: flex;
 }
 
-/* ===== TÍTULOS ===== */
-.slide-title {
-    font-size: clamp(1.8rem, 3.3vw, 2.6rem);
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-align: left;
-    margin-bottom: 12px;
-}
-
-/* Cores diferentes por tema */
-.slide-1 .slide-title,
-.slide-2 .slide-title {
-    color: #0ea5e9; /* azul claro */
-}
-
-.slide-3 .slide-title {
-    color: #22c55e; /* verde */
-}
-
-.slide-4 .slide-title {
-    color: #f97316; /* laranja */
-}
-
-.slide-5 .slide-title {
-    color: #6366f1; /* azul arroxeado, mas bem claro */
-}
-
-.slide-6 .slide-title,
-.slide-7 .slide-title {
-    color: #eab308; /* amarelo */
-}
-
-.big-title {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-}
-
-/* ===== CONTEÚDO DO SLIDE ===== */
 .slide-content {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/* ===== LINHA DE FOTOS PRINCIPAIS ===== */
+/* Linha com 2 fotos grandes */
 .photo-row {
     flex: 1;
     display: grid;
@@ -96,7 +61,7 @@ body {
     gap: 20px;
 }
 
-/* Foto grande (duas por slide) */
+/* Fotos grandes */
 .photo-big {
     position: relative;
     width: 100%;
@@ -110,7 +75,7 @@ body {
     overflow: hidden;
 }
 
-/* Leve borda colorida e brilho */
+/* Efeitos suaves de borda e brilho */
 .photo-big::before {
     content: "";
     position: absolute;
@@ -126,41 +91,14 @@ body {
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.22),
+        rgba(255, 255, 255, 0.2),
         transparent 45%,
-        rgba(34, 197, 94, 0.2)
+        rgba(34, 197, 94, 0.25)
     );
     mix-blend-mode: screen;
 }
 
-/* ===== LINHA DE FOTOS PEQUENAS NO ÚLTIMO SLIDE ===== */
-.small-bottom-row {
-    margin-top: 14px;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.photo-small {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 14px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.28);
-    overflow: hidden;
-}
-
-.photo-small::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 2px solid rgba(234, 179, 8, 0.7);
-    mix-blend-mode: soft-light;
-}
-
-/* ===== CONTROLES ===== */
+/* Controles */
 .controls {
     position: fixed;
     bottom: 18px;
@@ -195,6 +133,12 @@ body {
     box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
 }
 
+.nav-button:disabled {
+    opacity: 0.4;
+    cursor: default;
+    box-shadow: none;
+}
+
 .slide-counter {
     font-size: 0.85rem;
     color: #0f172a;
@@ -204,7 +148,7 @@ body {
     border: 1px solid rgba(148, 163, 184, 0.7);
 }
 
-/* ===== INDICADORES (PONTOS) ===== */
+/* Indicadores (pontos) */
 .slide-indicators {
     position: fixed;
     bottom: 60px;
@@ -215,7 +159,6 @@ body {
     z-index: 20;
 }
 
-/* Exemplo de classe que seu JS pode usar */
 .indicator-dot {
     width: 9px;
     height: 9px;
@@ -229,7 +172,7 @@ body {
     background: #22c55e;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* Responsivo */
 @media (max-width: 900px) {
     .presentation-container {
         padding: 12px 10px 90px;
@@ -241,16 +184,8 @@ body {
         border-radius: 18px;
     }
 
-    .slide-title {
-        text-align: center;
-    }
-
     .photo-row {
         grid-template-columns: 1fr;
-    }
-
-    .small-bottom-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .photo-big {
@@ -259,10 +194,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .small-bottom-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .controls {
         flex-direction: column;
         gap: 8px;

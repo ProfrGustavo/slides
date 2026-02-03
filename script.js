@@ -6,7 +6,7 @@
 let currentSlide = 1;
 
 // Número total de slides (AJUSTE AQUI se mudar a quantidade)
-const totalSlides = 7;
+const totalSlides = 10;
 
 /* ============================================
    FUNÇÃO: Mostrar um slide específico

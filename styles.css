@@ -1,0 +1,669 @@
+/* ============================================
+   ESTILOS GERAIS DA APRESENTAÇÃO
+   ============================================ */
+
+/* Reset de estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos do corpo da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* ============================================
+   CONTAINER PRINCIPAL
+   ============================================ */
+
+.presentation-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============================================
+   ESTILOS DOS SLIDES
+   ============================================ */
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    overflow-y: auto;
+}
+
+/* Slide ativo (visível) */
+.slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+/* Conteúdo dos slides */
+.slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* ============================================
+   TIPOGRAFIA DOS SLIDES
+   ============================================ */
+
+.slide-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.slide-subtitle {
+    font-size: 1.5em;
+    color: #666;
+    text-align: center;
+    font-weight: 300;
+}
+
+.slide-body {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slide-text-section {
+    flex: 1;
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+}
+
+.slide-text-section p {
+    margin-bottom: 15px;
+}
+
+.slide-text-section strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* ============================================
+   IMAGENS NOS SLIDES
+   ============================================ */
+
+.slide-image {
+    flex: 1;
+    min-height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.slide-image-small {
+    width: 300px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+/* ============================================
+   SLIDE 1: ABERTURA
+   ============================================ */
+
+.slide-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.slide-1 .slide-title {
+    color: white;
+    font-size: 3.5em;
+}
+
+.slide-1 .slide-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.8em;
+}
+
+.slide-1 .slide-text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ============================================
+   SLIDE 2: IMPORTÂNCIA
+   ============================================ */
+
+.slide-2 {
+    background: linear-gradient(to bottom, #f5f7fa 0%, #e9ecef 100%);
+}
+
+.slide-2 .slide-title {
+    color: #667eea;
+}
+
+/* ============================================
+   SLIDE 3: BENEFÍCIOS
+   ============================================ */
+
+.slide-3 {
+    background: linear-gradient(to bottom, #fff5f7 0%, #f0f4ff 100%);
+}
+
+.slide-3 .slide-title {
+    color: #764ba2;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.benefit-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #667eea;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.benefit-card h3 {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* ============================================
+   SLIDE 4: MARATONA TECH
+   ============================================ */
+
+.slide-4 {
+    background: linear-gradient(to bottom, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.slide-4 .slide-title {
+    color: #0284c7;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.feature-list li {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.feature-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+/* ============================================
+   SLIDE 5: INTERDISCIPLINARIDADE
+   ============================================ */
+
+.slide-5 {
+    background: linear-gradient(to bottom, #f5fdf4 0%, #f0fdf4 100%);
+}
+
+.slide-5 .slide-title {
+    color: #16a34a;
+}
+
+.interdisciplinary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.connection-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #16a34a;
+    transition: transform 0.3s ease;
+}
+
+.connection-card:hover {
+    transform: translateY(-5px);
+}
+
+.subject-icon {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.connection-card h4 {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.connection-card p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.highlight-text {
+    background: #dcfce7;
+    padding: 15px;
+    border-left: 4px solid #16a34a;
+    border-radius: 5px;
+    color: #166534;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+/* ============================================
+   SLIDE 6: JORNADA CONTÍNUA
+   ============================================ */
+
+.slide-6 {
+    background: linear-gradient(to bottom, #fef3c7 0%, #fef08a 100%);
+}
+
+.slide-6 .slide-title {
+    color: #d97706;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.timeline-marker {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    flex-shrink: 0;
+}
+
+.timeline-content {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    flex: 1;
+}
+
+.timeline-content h4 {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* ============================================
+   SLIDE 7: COLABORAÇÃO
+   ============================================ */
+
+.slide-7 {
+    background: linear-gradient(to bottom, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.slide-7 .slide-title {
+    color: #be185d;
+}
+
+.collaboration-section {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    width: 100%;
+}
+
+.collaboration-text {
+    flex: 1;
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #555;
+}
+
+.collaboration-text strong {
+    color: #be185d;
+}
+
+.collaboration-highlights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.highlight-item {
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #555;
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #be185d;
+}
+
+/* ============================================
+   SLIDE 8: CONCLUSÃO
+   ============================================ */
+
+.slide-8 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.conclusion-content {
+    text-align: center;
+    color: white;
+}
+
+.slide-8 .slide-title {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.conclusion-text {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.conclusion-highlight {
+    font-size: 1.15em;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+.conclusion-call {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CONTROLES DE NAVEGAÇÃO
+   ============================================ */
+
+.controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    z-index: 20;
+}
+
+.nav-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slide-counter {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #667eea;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    min-width: 80px;
+    text-align: center;
+}
+
+/* ============================================
+   INDICADORES DE SLIDE (PONTOS)
+   ============================================ */
+
+.slide-indicators {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.indicator-dot.active {
+    background: white;
+    width: 30px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.indicator-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .presentation-container {
+        height: auto;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .slide {
+        padding: 40px 20px;
+        height: auto;
+        min-height: 600px;
+    }
+
+    .slide-title {
+        font-size: 1.8em;
+    }
+
+    .slide-subtitle {
+        font-size: 1.2em;
+    }
+
+    .slide-body {
+        flex-direction: column;
+    }
+
+    .benefits-grid,
+    .interdisciplinary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .slide-image,
+    .slide-image-small {
+        width: 100%;
+        height: 250px;
+    }
+
+    .controls {
+        bottom: 15px;
+        gap: 15px;
+    }
+
+    .nav-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .slide-counter {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    .timeline {
+        gap: 15px;
+    }
+
+    .timeline-marker {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        padding: 30px 15px;
+        min-height: 500px;
+    }
+
+    .slide-title {
+        font-size: 1.5em;
+    }
+
+    .slide-subtitle {
+        font-size: 1em;
+    }
+
+    .slide-body {
+        gap: 15px;
+    }
+
+    .slide-text-section {
+        font-size: 0.95em;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-button {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+
+    .slide-counter {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+
+    .slide-indicators {
+        bottom: 80px;
+        gap: 6px;
+    }
+
+    .indicator-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator-dot.active {
+        width: 24px;
+    }
+}

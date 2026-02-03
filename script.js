@@ -6,7 +6,7 @@
 let currentSlide = 1;
 
 // Número total de slides (AJUSTE AQUI se mudar a quantidade)
-const totalSlides = 10;
+const totalSlides = 7;
 
 /* ============================================
    FUNÇÃO: Mostrar um slide específico
@@ -28,7 +28,7 @@ function showSlide(n) {
         slide.classList.remove('active');
     });
 
-    // Mostra o slide atual (se existir)
+    // Garante que o índice existe antes de usar
     if (slides[currentSlide - 1]) {
         slides[currentSlide - 1].classList.add('active');
     }
@@ -85,7 +85,6 @@ function updateButtons() {
     if (prevBtn) {
         prevBtn.disabled = currentSlide === 1;
     }
-
     if (nextBtn) {
         nextBtn.disabled = currentSlide === totalSlides;
     }
@@ -118,7 +117,7 @@ function createIndicators() {
 }
 
 /* ============================================
-   CONTROLE POR TECLADO
+   FUNÇÃO: Controle por teclado
    ============================================ */
 document.addEventListener('keydown', (event) => {
     // Seta para a direita ou Enter: próximo slide
@@ -160,10 +159,3 @@ document.addEventListener('DOMContentLoaded', () => {
       - Adicione um novo <div class="slide"> no HTML
       - Atualize a constante 'totalSlides' aqui no script
 
-   2. EDITAR TÍTULOS / IMAGENS:
-      - Abra o arquivo index.html
-      - Edite os <h1>/<h2> e as URLs de background-image
-
-   3. MUDAR QUANTIDADE DE SLIDES:
-      - Ajuste 'totalSlides' para o número real de .slide no HTML
-   ============================================ */

@@ -1,136 +1,281 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria de Slides - 2 Fotos por Slide</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="presentation-container">
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <!-- SLIDE 1 -->
-        <div class="slide slide-1 active">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (1).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (2).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== BASE ===== */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #2d2cff 0, #0b1020 40%, #05060a 100%);
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        <!-- SLIDE 2 -->
-        <div class="slide slide-2">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (3).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (4).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== CONTAINER PRINCIPAL ===== */
+.presentation-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 32px 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        <!-- SLIDE 3 -->
-        <div class="slide slide-3">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (5).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (6).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== SLIDES ===== */
+.slide {
+    position: absolute;
+    inset: 32px 40px 80px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.95));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    padding: 32px 40px;
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+}
 
-        <!-- SLIDE 4 -->
-        <div class="slide slide-4">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (7).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (8).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+.slide.active {
+    display: flex;
+}
 
-        <!-- SLIDE 5 -->
-        <div class="slide slide-5">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (9).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (10).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== TÍTULOS ===== */
+.slide-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f97316;
+    text-shadow: 0 0 18px rgba(249, 115, 22, 0.4);
+    margin-bottom: 12px;
+}
 
-        <!-- SLIDE 6 -->
-        <div class="slide slide-6">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (11).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (12).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+.big-title {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: #22d3ee;
+    text-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
+}
 
-        <!-- SLIDE 7 -->
-        <div class="slide slide-7">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (13).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (14).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+.slide-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: #e5e7eb;
+    opacity: 0.9;
+}
 
-        <!-- SLIDE 8 -->
-        <div class="slide slide-8">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (15).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (16).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== LAYOUT INTERNO DOS SLIDES ===== */
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-        <!-- SLIDE 9 -->
-        <div class="slide slide-9">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (17).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (18).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+.slide-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-        <!-- SLIDE 10 -->
-        <div class="slide slide-10">
-            <div class="slide-content">
-                <div class="photo-row">
-                    <div class="photo-big" style="background-image: url('img/imagem (19).jpeg');"></div>
-                    <div class="photo-big" style="background-image: url('img/imagem (20).jpeg');"></div>
-                </div>
-            </div>
-        </div>
+/* ===== SLIDE 1 - ABERTURA ===== */
+.slide-1 .slide-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr);
+    gap: 32px;
+    align-items: center;
+}
 
-    </div>
+.slide-1 .slide-text {
+    max-width: 480px;
+}
 
-    <!-- Controles de navegação -->
-    <div class="controls">
-        <button class="nav-button prev-button" id="prevBtn" onclick="previousSlide()">
-            ← Anterior
-        </button>
+/* Foto grande de abertura */
+.slide-image-big {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    border-radius: 24px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    border: 3px solid rgba(56, 189, 248, 0.8);
+}
 
-        <div class="slide-counter">
-            <span id="slideNumber">1</span> / <span id="totalSlides">10</span>
-        </div>
+/* ===== GRIDS DE FOTOS ===== */
+.photos-only {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
 
-        <button class="nav-button next-button" id="nextBtn" onclick="nextSlide()">
-            Próximo →
-        </button>
-    </div>
+/* 2 colunas */
+.photo-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
 
-    <!-- Indicadores de slide (pontos) -->
-    <div class="slide-indicators">
-        <!-- Os pontos serão criados pelo script.js -->
-    </div>
+/* 3 colunas */
+.photo-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* Item de foto genérico */
+.photo-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(251, 191, 36, 0.9);
+    overflow: hidden;
+}
+
+/* Efeito de brilho */
+.photo-item::after,
+.slide-image-big::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(248, 250, 252, 0.05),
+        transparent 40%,
+        rgba(56, 189, 248, 0.06)
+    );
+    mix-blend-mode: screen;
+}
+
+/* ===== SLIDE DE FECHAMENTO ===== */
+.closing-slide {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.closing-text {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 460px;
+}
+
+/* ===== CONTROLES ===== */
+.controls {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 20;
+}
+
+.nav-button {
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+    background: #f97316;
+    border-color: #fed7aa;
+    color: #111827;
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.6);
+}
+
+.slide-counter {
+    font-size: 0.9rem;
+    color: #e5e7eb;
+    padding: 6px 10px;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+}
+
+/* ===== INDICADORES (PONTOS) ===== */
+.slide-indicators {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+}
+
+/* Presume que o JS cria elementos com a classe .indicator-dot */
+.indicator-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.7);
+    transition: all 0.2s ease;
+}
+
+.indicator-dot.active {
+    width: 24px;
+    background: #22d3ee;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+    .presentation-container {
+        padding: 16px 10px 90px;
+    }
+
+    .slide {
+        inset: 16px 10px 90px;
+        padding: 18px 16px;
+        border-radius: 18px;
+    }
+
+    .slide-1 .slide-content,
+    .closing-slide {
+        grid-template-columns: 1fr;
+    }
+
+    .slide-image-big {
+        min-height: 220px;
+    }
+
+    .photo-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-grid-2,
+    .photo-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
